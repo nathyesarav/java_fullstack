@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Demo Table</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Distances</h1>
+    
+      <table class="table">
+         <thead id="table-headers">
+         </thead>
+         <tbody id="table-rows">
+         </tbody>
+      </table>
+    </div>
+    <script type="text/javascript" src="demo-table.js">
+		function getHeadersHtml(data) {
+		  return "<tr><th></th>" + data.destination_addresses.map(function(dest) {
+			return "<th>" + dest + "</th>";
+		  }).join("") + "</tr>";
+		}
+		function renderHeaders(data) {
+		  var html = getHeadersHtml(data);
+		  document.getElementById("table-headers").innerHTML = html;
+		}
+		function getColumnsHtml(row) {
+		  return row.elements.map(function(element) {
+			return "<td>" + element.distance.text + "</td>";
+		  }).join("")
+		}
+	</script>
+  </body>
+</html>
